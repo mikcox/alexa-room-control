@@ -1,0 +1,32 @@
+{
+  "intents": [
+    {
+      "intent": "ChangeLightIntent",
+      "slots": [
+        {
+          "name": "Command",
+          "type": "LIST_OF_COMMANDS"
+        },
+        {
+          "name": "Color",
+          "type": "LIST_OF_COLORS"
+        }
+      ]
+    },
+    {
+      "intent": "ChangeBrightnessIntent",
+      "slots": [
+        {
+          "name": "Brightness",
+          "type": "AMAZON.NUMBER"
+        }
+      ]
+    },
+    {
+      "intent": "BlinkIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}

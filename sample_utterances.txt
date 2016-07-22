@@ -1,0 +1,19 @@
+ChangeBrightnessIntent to change brightness to {Brightness} percent
+ChangeBrightnessIntent to change the brightness to {Brightness} percent
+ChangeBrightnessIntent to dim lights to {Brightness} percent
+ChangeBrightnessIntent to dim the lights to {Brightness} percent
+BlinkIntent to blink
+BlinkIntent to blink lights
+BlinkIntent to blink the lights
+BlinkIntent to make the lights blink
+BlinkIntent to change lights to blinking 
+ChangeLightIntent to {Command}
+ChangeLightIntent to {Command} to {Color}
+ChangeLightIntent to {Command} {Color}
+ChangeLightIntent to {Command} {Simulation}
+AMAZON.HelpIntent for help
+AMAZON.HelpIntent for a manual
+AMAZON.HelpIntent for how to use
+AMAZON.HelpIntent how to change the lights
+AMAZON.HelpIntent how to control lights
+AMAZON.HelpIntent how to control the lights
