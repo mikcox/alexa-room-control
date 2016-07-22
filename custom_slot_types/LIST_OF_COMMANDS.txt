@@ -4,4 +4,3 @@ turn lights on
 turn lights off
 turn off lights
 turn on lights
-simulate

@@ -102,6 +102,10 @@ function onIntent(intentRequest, session, callback) {
         changeBrightness(intent, session, callback);
     } else if ("BlinkIntent" === intentName) {
         blinkLights(intent, session, callback);
+    } else if ("TurnOnTVAndSoundbarIntent" === intentName) {
+        turnOnTVAndSoundbar(intent, session, callback);
+    } else if ("TurnOffTVAndSoundbarIntent" === intentName) {
+        turnOffTVAndSoundbar(intent, session, callback);
     } else if ("AMAZON.HelpIntent" === intentName) {
         getWelcomeResponse(callback);
     } else {
@@ -154,7 +158,7 @@ function changeColors(intent, session, callback) {
         if ( (command === 'change color' || command === 'turn lights') && colorSlot) {
             var color = colorSlot.value;
             sessionAttributes = createSessionAttributes(command, color);
-            speechOutput = "Changed color to " + color + ".";
+            //speechOutput = "Changed color to " + color + ".";
             repromptText = "You can issue commands like," + "Alexa, tell my room to change color to blue.";
 
             // Create light states that our Philips Hue lights will understand
@@ -268,11 +272,13 @@ function changeBrightness(intent, session, callback) {
         var brightnessVal = Math.min( brightnessSlot.value, 100 );
         // Change the brightness value of the lights, weighted by the percentage given to Alexa
         var desiredState = {
-            "bri": Math.round( 254 * brightnessVal / 100 )
+            "lights": {
+                "bri": Math.round( brightnessVal )
+            }
         };
 
         // Publish states as messages to AWS IoT topic
-        device.publish('$aws/things/IEC-all-lights/shadow/update',
+        device.publish('$aws/things/My_Room/shadow/update',
         JSON.stringify({ "state": {
           "desired": desiredState
         }}), null, function() {
@@ -289,24 +295,56 @@ function changeBrightness(intent, session, callback) {
     }
 }
 
-function blinkLights(intent, session, callback) {
+function turnOnTVAndSoundbar(intent, session, callback) {
     var cardTitle = intent.name;
     var repromptText = "";
     var sessionAttributes = {};
     var shouldEndSession = true;
     var speechOutput = "";
 
-    // Blink the lights
+    // Turn on the TV and the soundbar
     var desiredState = {
-        "alert": "lselect"
+        soundbar: {
+            on: true
+        },
+        tv: {
+            on: true
+        }
     };
 
     // Publish states as messages to AWS IoT topic
-    device.publish('$aws/things/IEC-all-lights/shadow/update',
+    device.publish('$aws/things/My_Room/shadow/update',
     JSON.stringify({ "state": {
       "desired": desiredState
     }}), null, function() {
-        speechOutput = "Blinking lights.";
+        speechOutput = "Turned on TV and soundbar.";
+        callback(sessionAttributes, buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession))
+    });  
+}
+
+function turnOffTVAndSoundbar(intent, session, callback) {
+    var cardTitle = intent.name;
+    var repromptText = "";
+    var sessionAttributes = {};
+    var shouldEndSession = true;
+    var speechOutput = "";
+
+    // Turn off the TV and the soundbar
+    var desiredState = {
+        soundbar: {
+            on: false
+        },
+        tv: {
+            on: false
+        }
+    };
+
+    // Publish states as messages to AWS IoT topic
+    device.publish('$aws/things/My_Room/shadow/update',
+    JSON.stringify({ "state": {
+      "desired": desiredState
+    }}), null, function() {
+        speechOutput = "Turned off TV and soundbar.";
         callback(sessionAttributes, buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession))
     });  
 }

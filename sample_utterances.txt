@@ -2,15 +2,31 @@ ChangeBrightnessIntent to change brightness to {Brightness} percent
 ChangeBrightnessIntent to change the brightness to {Brightness} percent
 ChangeBrightnessIntent to dim lights to {Brightness} percent
 ChangeBrightnessIntent to dim the lights to {Brightness} percent
-BlinkIntent to blink
-BlinkIntent to blink lights
-BlinkIntent to blink the lights
-BlinkIntent to make the lights blink
-BlinkIntent to change lights to blinking 
+
 ChangeLightIntent to {Command}
 ChangeLightIntent to {Command} to {Color}
 ChangeLightIntent to {Command} {Color}
-ChangeLightIntent to {Command} {Simulation}
+
+TurnOnTVAndSoundbarIntent to turn on the TV
+TurnOnTVAndSoundbarIntent turn on the TV
+TurnOnTVAndSoundbarIntent to power on the TV
+TurnOnTVAndSoundbarIntent power on the TV
+TurnOnTVAndSoundbarIntent to start up the TV
+TurnOnTVAndSoundbarIntent start up the TV
+TurnOnTVAndSoundbarIntent I want to watch a movie
+TurnOnTVAndSoundbarIntent I want to play P S four
+TurnOnTVAndSoundbarIntent we want to watch a movie
+TurnOnTVAndSoundbarIntent we want to play P S four
+
+TurnOffTVAndSoundbarIntent to turn off the TV
+TurnOffTVAndSoundbarIntent turn off the TV
+TurnOffTVAndSoundbarIntent to power off the TV
+TurnOffTVAndSoundbarIntent power off the TV
+TurnOffTVAndSoundbarIntent to shut off the TV
+TurnOffTVAndSoundbarIntent shut off the TV
+TurnOffTVAndSoundbarIntent I'm done with the TV
+TurnOffTVAndSoundbarIntent we're done with the TV
+
 AMAZON.HelpIntent for help
 AMAZON.HelpIntent for a manual
 AMAZON.HelpIntent for how to use

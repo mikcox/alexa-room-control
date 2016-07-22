@@ -23,7 +23,10 @@
       ]
     },
     {
-      "intent": "BlinkIntent"
+      "intent": "TurnOnTVAndSoundbarIntent"
+    },
+    {
+      "intent": "TurnOffTVAndSoundbarIntent"
     },
     {
       "intent": "AMAZON.HelpIntent"
