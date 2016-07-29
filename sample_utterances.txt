@@ -27,6 +27,51 @@ TurnOffTVAndSoundbarIntent shut off the TV
 TurnOffTVAndSoundbarIntent I'm done with the TV
 TurnOffTVAndSoundbarIntent we're done with the TV
 
+TurnOnACIntent turn on the AC
+TurnOnACIntent turn on the air conditioner
+TurnOnACIntent turn on the air conditioning
+TurnOnACIntent to turn on the AC
+TurnOnACIntent to turn on the air conditioner
+TurnOnACIntent to turn on the air conditioning
+TurnOnACIntent give me some AC
+TurnOnACIntent give me some air conditioning
+TurnOnACIntent to give me some AC
+TurnOnACIntent to give me some air conditioning
+
+TurnOffACIntent turn off the AC
+TurnOffACIntent turn off the air conditioner
+TurnOffACIntent turn off the air conditioning
+TurnOffACIntent to turn off the AC
+TurnOffACIntent to turn off the air conditioner
+TurnOffACIntent to turn off the air conditioning
+TurnOffACIntent cut the AC
+TurnOffACIntent cut the air conditioning
+TurnOffACIntent to cut the AC
+TurnOffACIntent to cur the air conditioning
+TurnOffACIntent kill the AC
+TurnOffACIntent kill the air conditioning
+TurnOffACIntent to kill the AC
+TurnOffACIntent to kill the air conditioning
+
+ChangeACModeIntent switch the AC to {Mode}
+ChangeACModeIntent switch the air conditioning to {Mode}
+ChangeACModeIntent switch the air conditioner to {Mode}
+ChangeACModeIntent change the AC to {Mode}
+ChangeACModeIntent change the air conditioning to {Mode}
+ChangeACModeIntent change the air conditioner to {Mode}
+ChangeACModeIntent switch the AC mode to {Mode}
+ChangeACModeIntent switch the air conditioning mode to {Mode}
+ChangeACModeIntent switch the air conditioner mode to {Mode}
+ChangeACModeIntent change the AC mode to {Mode}
+ChangeACModeIntent change the air conditioning mode to {Mode}
+ChangeACModeIntent change the air conditioner mode to {Mode}
+ChangeACModeIntent switch the AC to {Mode} mode
+ChangeACModeIntent switch the air conditioning to {Mode} mode
+ChangeACModeIntent switch the air conditioner to {Mode} mode
+ChangeACModeIntent change the AC to {Mode} mode
+ChangeACModeIntent change the air conditioning to {Mode} mode
+ChangeACModeIntent change the air conditioner to {Mode} mode
+
 AMAZON.HelpIntent for help
 AMAZON.HelpIntent for a manual
 AMAZON.HelpIntent for how to use

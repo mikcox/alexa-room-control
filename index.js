@@ -106,6 +106,12 @@ function onIntent(intentRequest, session, callback) {
         turnOnTVAndSoundbar(intent, session, callback);
     } else if ("TurnOffTVAndSoundbarIntent" === intentName) {
         turnOffTVAndSoundbar(intent, session, callback);
+    } else if ("TurnOnACIntent" === intentName) {
+        turnOnAC(intent, session, callback);
+    } else if ("TurnOffACIntent" === intentName) {
+        turnOffAC(intent, session, callback);
+    } else if ("ChangeACModeIntent" === intentName) {
+        changeACmode(intent, session, callback);
     } else if ("AMAZON.HelpIntent" === intentName) {
         getWelcomeResponse(callback);
     } else {
@@ -347,6 +353,89 @@ function turnOffTVAndSoundbar(intent, session, callback) {
         speechOutput = "Turned off TV and soundbar.";
         callback(sessionAttributes, buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession))
     });  
+}
+
+function turnOnAC(intent, session, callback) {
+    var cardTitle = intent.name;
+    var repromptText = "";
+    var sessionAttributes = {};
+    var shouldEndSession = true;
+    var speechOutput = "";
+
+    // Turn on the AC
+    var desiredState = {
+        ac: {
+            on: true
+        }
+    };
+
+    // Publish states as messages to AWS IoT topic
+    device.publish('$aws/things/My_Room/shadow/update',
+    JSON.stringify({ "state": {
+      "desired": desiredState
+    }}), null, function() {
+        speechOutput = "Cool.";
+        callback(sessionAttributes, buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession))
+    });  
+}
+
+function turnOffAC(intent, session, callback) {
+    var cardTitle = intent.name;
+    var repromptText = "";
+    var sessionAttributes = {};
+    var shouldEndSession = true;
+    var speechOutput = "";
+
+    // Turn on the AC
+    var desiredState = {
+        ac: {
+            on: false,
+            mode: 'energy_saver'
+        }
+    };
+
+    // Publish states as messages to AWS IoT topic
+    device.publish('$aws/things/My_Room/shadow/update',
+    JSON.stringify({ "state": {
+      "desired": desiredState
+    }}), null, function() {
+        speechOutput = "Not cool.";
+        callback(sessionAttributes, buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession))
+    });  
+}
+
+function changeACmode(intent, session, callback) {
+    var cardTitle = intent.name;
+    var repromptText = "";
+    var sessionAttributes = {};
+    var modeSlot = intent.slots.Mode;
+    var shouldEndSession = true;
+    var speechOutput = ""
+
+    if ( modeSlot ) {
+        var mode = modeSlot.value;
+
+        // Format as we expect on the back end
+        if ( mode === 'energy saver' ) {
+            mode = 'energy_saver';
+        }
+
+        // Turn on the AC
+        var desiredState = {
+            ac: {
+                mode: mode
+            }
+        };
+
+        // Publish states as messages to AWS IoT topic
+        device.publish('$aws/things/My_Room/shadow/update',
+        JSON.stringify({ "state": {
+          "desired": desiredState
+        }}), null, function() {
+            speechOutput = "";
+            callback(sessionAttributes, buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession))
+        });
+    }
 }
 
 function createSessionAttributes(command, color) {

@@ -29,6 +29,21 @@
       "intent": "TurnOffTVAndSoundbarIntent"
     },
     {
+      "intent": "TurnOnACIntent"
+    },
+    {
+      "intent": "TurnOffACIntent"
+    },
+    {
+      "intent": "ChangeACModeIntent",
+      "slots": [
+        {
+          "name": "Mode",
+          "type": "LIST_OF_MODES"
+        }
+      ]
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     }
   ]
