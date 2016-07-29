@@ -423,6 +423,7 @@ function changeACmode(intent, session, callback) {
         // Turn on the AC
         var desiredState = {
             ac: {
+                on: true,
                 mode: mode
             }
         };
