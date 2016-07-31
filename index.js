@@ -106,6 +106,8 @@ function onIntent(intentRequest, session, callback) {
         turnOnTVAndSoundbar(intent, session, callback);
     } else if ("TurnOffTVAndSoundbarIntent" === intentName) {
         turnOffTVAndSoundbar(intent, session, callback);
+    } else if ("SetVolumeIntent" === intentName) {
+        setVolume(intent, session, callback);
     } else if ("TurnOnACIntent" === intentName) {
         turnOnAC(intent, session, callback);
     } else if ("TurnOffACIntent" === intentName) {
@@ -355,6 +357,36 @@ function turnOffTVAndSoundbar(intent, session, callback) {
         speechOutput = "Turned off TV and soundbar.";
         callback(sessionAttributes, buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession))
     });  
+}
+
+function setVolume(intent, session, callback) {
+    var cardTitle = intent.name;
+    var repromptText = "";
+    var sessionAttributes = {};
+    var volumeSlot = intent.slots.Volume;
+    var shouldEndSession = true;
+    var speechOutput = ""
+
+    if ( volumeSlot ) {
+        var volume = parseInt( volumeSlot.value );
+
+        // Turn the AC on and update the mode as necessary
+        var desiredState = {
+            soundbar: {
+                on: true,
+                volume: volume
+            }
+        };
+
+        // Publish states as messages to AWS IoT topic
+        device.publish('$aws/things/My_Room/shadow/update',
+        JSON.stringify({ "state": {
+          "desired": desiredState
+        }}), null, function() {
+            speechOutput = "";
+            callback(sessionAttributes, buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession))
+        });
+    }
 }
 
 function turnOnAC(intent, session, callback) {

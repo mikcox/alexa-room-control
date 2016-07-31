@@ -27,6 +27,13 @@ TurnOffTVAndSoundbarIntent shut off the TV
 TurnOffTVAndSoundbarIntent I'm done with the TV
 TurnOffTVAndSoundbarIntent we're done with the TV
 
+SetVolumeIntent volume {Volume}
+SetVolumeIntent set volume {Volume}
+SetVolumeIntent set volume to {Volume}
+SetVolumeIntent set soundbar volume to {Volume}
+SetVolumeIntent change volume to {Volume}
+SetVolumeIntent change soundbar volume to {Volume}
+
 TurnOnACIntent turn on the AC
 TurnOnACIntent turn on the air conditioner
 TurnOnACIntent turn on the air conditioning

@@ -29,6 +29,15 @@
       "intent": "TurnOffTVAndSoundbarIntent"
     },
     {
+      "intent": "SetVolumeIntent",
+      "slots": [
+        {
+          "name": "Volume",
+          "type": "AMAZON.NUMBER"
+        }
+      ]
+    },
+    {
       "intent": "TurnOnACIntent"
     },
     {
