@@ -112,6 +112,8 @@ function onIntent(intentRequest, session, callback) {
         turnOffAC(intent, session, callback);
     } else if ("ChangeACModeIntent" === intentName) {
         changeACmode(intent, session, callback);
+    } else if ("SetACTimerIntent" === intentName) {
+        setACTimer(intent, session, callback);
     } else if ("AMAZON.HelpIntent" === intentName) {
         getWelcomeResponse(callback);
     } else {
@@ -365,7 +367,9 @@ function turnOnAC(intent, session, callback) {
     // Turn on the AC
     var desiredState = {
         ac: {
-            on: true
+            on: true,
+            mode: 'energy_saver',
+            timer: 0
         }
     };
 
@@ -386,11 +390,12 @@ function turnOffAC(intent, session, callback) {
     var shouldEndSession = true;
     var speechOutput = "";
 
-    // Turn on the AC
+    // Turn off the AC
     var desiredState = {
         ac: {
             on: false,
-            mode: 'energy_saver'
+            mode: 'energy_saver',
+            timer: 0
         }
     };
 
@@ -420,11 +425,42 @@ function changeACmode(intent, session, callback) {
             mode = 'energy_saver';
         }
 
-        // Turn on the AC
+        // Turn the AC on and update the mode as necessary
         var desiredState = {
             ac: {
                 on: true,
-                mode: mode
+                mode: mode,
+                timer: 0
+            }
+        };
+
+        // Publish states as messages to AWS IoT topic
+        device.publish('$aws/things/My_Room/shadow/update',
+        JSON.stringify({ "state": {
+          "desired": desiredState
+        }}), null, function() {
+            speechOutput = "";
+            callback(sessionAttributes, buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession))
+        });
+    }
+}
+
+function setACTimer(intent, session, callback) {
+    var cardTitle = intent.name;
+    var repromptText = "";
+    var sessionAttributes = {};
+    var hoursSlot = intent.slots.Hours;
+    var shouldEndSession = true;
+    var speechOutput = ""
+
+    if ( hoursSlot ) {
+        var hours = parseInt( hoursSlot.value );
+
+        // Turn the AC on and update the mode as necessary
+        var desiredState = {
+            ac: {
+                on: false,
+                timer: hours
             }
         };
 

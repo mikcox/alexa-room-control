@@ -44,6 +44,15 @@
       ]
     },
     {
+      "intent": "SetACTimerIntent",
+      "slots": [
+        {
+          "name": "Hours",
+          "type": "AMAZON.NUMBER"
+        }
+      ]
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     }
   ]

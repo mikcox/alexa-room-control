@@ -72,6 +72,22 @@ ChangeACModeIntent change the AC to {Mode} mode
 ChangeACModeIntent change the air conditioning to {Mode} mode
 ChangeACModeIntent change the air conditioner to {Mode} mode
 
+SetACTimerIntent set AC timer to {Hours}
+SetACTimerIntent set AC timer to {Hours} hours
+SetACTimerIntent set AC timer for {Hours}
+SetACTimerIntent set AC timer for {Hours} hours
+SetACTimerIntent set the AC timer to {Hours}
+SetACTimerIntent set the AC timer to {Hours} hours
+SetACTimerIntent set the AC timer for {Hours}
+SetACTimerIntent set the AC timer for {Hours} hours
+SetACTimerIntent set a timer on the AC to {Hours}
+SetACTimerIntent set a timer on the AC to {Hours} hours
+SetACTimerIntent set a timer on the AC for {Hours}
+SetACTimerIntent set a timer on the AC for {Hours} hours
+SetACTimerIntent turn on the AC in {Hours} hours
+SetACTimerIntent turn on the air conditioner in {Hours} hours
+SetACTimerIntent turn on the air conditioning in {Hours} hours
+
 AMAZON.HelpIntent for help
 AMAZON.HelpIntent for a manual
 AMAZON.HelpIntent for how to use
